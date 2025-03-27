@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Sales Prediction{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/predict.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="prediction-container">
+    <div class="pred-background"></div>
+    <h1>Predict Your Future Sales</h1>
+
+    <!-- Prediction Form -->
+    <form id="prediction-form">
+        <!-- Categories Dropdown -->
+        <div class="form-group">
+            <label>Categories:</label>
+            <div class="custom-dropdown" id="categories-dropdown">
+                <span>Select Categories</span>
+                <ul class="dropdown-list" id="categories-list">
+                    <li><input type="checkbox" value="Shirts"> Shirts</li>
+                    <li><input type="checkbox" value="Trousers"> Trousers</li>
+                    <li><input type="checkbox" value="Jackets"> Jackets</li>
+                    <li><input type="checkbox" value="Dresses"> Dresses</li>
+                    <li><input type="checkbox" value="Accessories"> Accessories</li>
+                    <li><input type="checkbox" value="Kurtas"> Kurtas</li>
+                    <li><input type="checkbox" value="Sarees"> Sarees</li>
+                </ul>
+            </div>
+            <div id="selected-categories" class="selected-items"></div>
+        </div>
+
+        <!-- Gender Dropdown -->
+        <div class="form-group">
+            <label>Gender:</label>
+            <div class="custom-dropdown" id="genders-dropdown">
+                <span>Select Gender</span>
+                <ul class="dropdown-list" id="genders-list">
+                    <li><input type="checkbox" value="Male"> Male</li>
+                    <li><input type="checkbox" value="Female"> Female</li>
+                </ul>
+            </div>
+            <div id="selected-genders" class="selected-items"></div>
+        </div>
+
+        <!-- Age Groups Dropdown -->
+        <div class="form-group">
+            <label>Age Groups:</label>
+            <div class="custom-dropdown" id="age-groups-dropdown">
+                <span>Select Age Groups</span>
+                <ul class="dropdown-list" id="age-groups-list">
+                    <li><input type="checkbox" value="18-25"> 18-25</li>
+                    <li><input type="checkbox" value="26-35"> 26-35</li>
+                    <li><input type="checkbox" value="36-45"> 36-45</li>
+                    <li><input type="checkbox" value="46-60"> 46-60</li>
+                </ul>
+            </div>
+            <div id="selected-age-groups" class="selected-items"></div>
+        </div>
+
+        <!-- Locations Dropdown -->
+        <div class="form-group">
+            <label>Locations:</label>
+            <div class="custom-dropdown" id="locations-dropdown">
+                <span>Select Locations</span>
+                <ul class="dropdown-list" id="locations-list">
+                    <li><input type="checkbox" value="Mumbai"> Mumbai</li>
+                    <li><input type="checkbox" value="Delhi"> Delhi</li>
+                    <li><input type="checkbox" value="Chennai"> Chennai </li>
+                    <li><input type="checkbox" value="Bangalore"> Bangalore</li>
+                    <li><input type="checkbox" value="Kolkata"> Kolkata</li>
+                    <li><input type="checkbox" value="Hyderabad"> Hyderabad</li>
+                    <li><input type="checkbox" value="Pune"> Pune</li>
+                </ul>
+            </div>
+            <div id="selected-locations" class="selected-items"></div>
+        </div>
+
+        <!-- Payment Methods Dropdown -->
+        <div class="form-group">
+            <label>Payment Methods:</label>
+            <div class="custom-dropdown" id="payment-methods-dropdown">
+                <span>Select Payment Methods</span>
+                <ul class="dropdown-list" id="payment-methods-list">
+                    <li><input type="checkbox" value="UPI"> UPI</li>
+                    <li><input type="checkbox" value="Cash On Delivery"> Cash On Delivery</li>
+                    <li><input type="checkbox" value="Credit Card"> Credit Card</li>
+                    <li><input type="checkbox" value="Debit Card"> Debit Card</li>
+                    <li><input type="checkbox" value="Bank Transfer"> Bank Transfer</li>
+                </ul>
+            </div>
+            <div id="selected-payment-methods" class="selected-items"></div>
+        </div>
+
+        <!-- Months to Predict -->
+        <div class="form-group">
+            <label>Months to Predict:</label>
+            <input type="number" id="months_to_predict" min="1" value="1" required />
+        </div>
+
+        <button type="submit" class="btn">Predict Sales</button>
+    </form>
+
+
+    <!-- Prediction Results -->
+    <div id="results" style="display: none;">
+        <h2>📈 Prediction Results</h2>
+        <p id="total-revenue"></p>
+        <div class="chart-container">
+            <canvas id="predictionChart"></canvas>
+        </div>
+        <table id="monthly-results">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>Predicted Revenue (₹)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/predict.js') }}"></script>
+
+{% endblock %}

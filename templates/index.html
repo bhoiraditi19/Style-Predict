@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <!-- ✅ Include Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Sales Prediction</h1>
+
+        <!-- ✅ Prediction Form -->
+        <form id="prediction-form" method="post" action="#">
+            <div class="form-group">
+                <label for="categories">Categories:</label>
+                <select id="categories" name="categories[]" multiple required class="multi-select">
+                    <option value="Shirts">Shirts</option>
+                    <option value="Trousers">Trousers</option>
+                    <option value="Jackets">Jackets</option>
+                    <option value="Dresses">Dresses</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Kurtas">Kurtas</option>
+                    <option value="Sarees">Sarees</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="genders">Genders:</label>
+                <select id="genders" name="genders[]" multiple required class="multi-select">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age_groups">Age Groups:</label>
+                <select id="age_groups" name="age_groups[]" multiple required class="multi-select">
+                    <option value="18-25">18-25</option>
+                    <option value="26-35">26-35</option>
+                    <option value="36-45">36-45</option>
+                    <option value="46-60">46-60</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="locations">Locations:</label>
+                <select id="locations" name="locations[]" multiple required class="multi-select">
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="payment_methods">Payment Methods:</label>
+                <select id="payment_methods" name="payment_methods[]" multiple required class="multi-select">
+                    <option value="UPI">UPI</option>
+                    <option value="Cash On Delivery">Cash On Delivery</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="months_to_predict">Months to Predict:</label>
+                <input type="number" id="months_to_predict" name="months_to_predict" min="1" value="1" required />
+            </div>
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        <!-- ✅ Display Results -->
+        <div id="results">
+            <h2>Prediction Results:</h2>
+            <p id="total-revenue"></p>
+            <table id="monthly-results">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Month</th>
+                        <th>Predicted Revenue (₹)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ✅ Include Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+    <script>
+        // ✅ Initialize Select2 on all multi-select fields
+        $(document).ready(function () {
+            $('.multi-select').select2({
+                placeholder: "Select options",
+                allowClear: true
+            });
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

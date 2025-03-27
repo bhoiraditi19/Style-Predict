@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Data Insights{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/insights.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="main-container">
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <h2>📊 Insights</h2>
+        <ul>
+            <li><a href="#overview">📌 General Overview</a></li>
+            <li><a href="#revenue-trends">💰 Revenue Trends</a></li>
+            <li><a href="#category-insights">🛒 Category Insights</a></li>
+            <li><a href="#demographics">👤 Demographics</a></li>
+            <li><a href="#location-insights">🌍 Location Insights</a></li>
+            <li><a href="#payment-method">💳 Payment Analysis</a></li>
+            <li><a href="#seasonality">📅 Seasonality & Trends</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- General Overview Section -->
+        <section id="overview" class="section">
+            <h2>📌 General Overview</h2>
+            <div class="cards">
+                <div class="card">📊 Total Dataset Entries: <strong>10,000+</strong></div>
+                <div class="card">📅 Time Range: <strong>Jan 2022 - Dec 2024</strong></div>
+                <div class="card">📌 Unique Values: <strong>15 Categories | 30 Locations</strong></div>
+            </div>
+            <div class="charts">
+                <canvas id="pieChart"></canvas>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Revenue Trends -->
+        <section id="revenue-trends" class="section">
+            <h2>💰 Revenue Trends</h2>
+            <div class="cards">
+                <div class="card">💰 Total Revenue: <strong>₹XXX Crores</strong></div>
+            </div>
+            <canvas id="revenueTrendChart"></canvas>
+        </section>
+
+        <!-- Category Insights -->
+        <section id="category-insights" class="section">
+            <h2>🛒 Category Insights</h2>
+            <canvas id="categoryChart"></canvas>
+        </section>
+
+        <!-- Demographics -->
+        <section id="demographics" class="section">
+            <h2>👤 Demographics Insights</h2>
+            <canvas id="genderPieChart"></canvas>
+            <canvas id="ageBarChart"></canvas>
+        </section>
+
+        <!-- Location Insights -->
+        <section id="location-insights" class="section">
+            <h2>🌍 Location-Based Insights</h2>
+            <canvas id="locationBarChart"></canvas>
+        </section>
+
+        <!-- Payment Methods -->
+        <section id="payment-method" class="section">
+            <h2>💳 Payment Method Analysis</h2>
+            <canvas id="paymentPieChart"></canvas>
+        </section>
+
+        <!-- Seasonality & Trends -->
+        <section id="seasonality" class="section">
+            <h2>📅 Seasonality & Trends</h2>
+            <canvas id="seasonTrendChart"></canvas>
+        </section>
+
+        <!-- Download Report Button -->
+        <button class="download-btn">📥 Download Insights Report</button>
+    </div>
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/insights.js') }}"></script>
+
+{% endblock %}
