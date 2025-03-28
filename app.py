@@ -16,6 +16,24 @@ def prediction():
 def insights():
     return render_template('insights.html')
 
+@app.route('/about-us')
+def about_us():
+    return render_template('about-us.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/privacy-policy')
+def privacy():
+    return render_template('privacy-policy.html')
+
+
+
+@app.route('/terms-of-service')
+def tos():
+    return render_template('terms-of-service.html')
+
 @app.route('/get-predictions')
 def get_predictions():
     return render_template('index.html')

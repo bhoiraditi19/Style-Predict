@@ -5,7 +5,7 @@
     --raisin-black: #30292f;
     --paynes-gray: #5d737e;
     --white: #fcfcfc;
-    --heading-colour: #171e48;
+    --heading-colour: rgb(0,0,0);
 }
 
 * {
@@ -15,7 +15,7 @@
 }
 
 body {
-    font-family: "Winky Sans", sans-serif;
+    font-family: "Chakra Petch", sans-serif;
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -25,6 +25,8 @@ body {
     position: relative;
     overflow-x: hidden;
 }
+
+
 
 .main-contaner {
     background-color: rgb(114, 88, 195);
@@ -81,21 +83,126 @@ body {
     overflow: visible;
 }
 
-.background {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.hero-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 3;
+    animation: fadeIn 2s ease-in-out;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 4rem;
+}
+
+.carousel-container {
     position: absolute;
     top: 0;
-    left: 0;
+    width: 95vw;
+    height: 90vh;
+    margin: 1rem auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px gray;
+    overflow: hidden;
+}
+
+/* Style for all background images */
+.carousel-bg {
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/static/images/hero\ bg.png');
     background-size: cover;
     background-position: center;
-    filter: blur(2px);
-    filter: brightness(90%);
-    /*Adjusttheblurintensity*/z-index: 0;
-    -webkit-filter: brightness(90%);
-    pointer-events: none;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    filter: brightness(40%);
+    -webkit-transition: opacity 2s ease-in-out;
+    -moz-transition: opacity 2s ease-in-out;
+    -ms-transition: opacity 2s ease-in-out;
+    -o-transition: opacity 2s ease-in-out;
 }
+
+/* First Image - Visible on Load, Stays in Loop */
+.carousel-bg:nth-child(1) {
+    background-image: url("/static/images/cr-1.webp");
+    opacity: 1;
+    /*Firstimagevisibleimmediately*/animation: fadeEffect 25s infinite 0s;
+    -webkit-animation: fadeEffect 25s infinite 0s;
+}
+
+/* Other images join the animation loop */
+.carousel-bg:nth-child(2) {
+    background-image: url("/static/images/cr-2.png");
+    animation: fadeEffect 25s infinite 5s;
+}
+
+.carousel-bg:nth-child(3) {
+    background-image: url("/static/images/cr-3.webp");
+    animation: fadeEffect 25s infinite 10s;
+}
+
+.carousel-bg:nth-child(4) {
+    background-image: url("/static/images/cr-4.webp");
+    animation: fadeEffect 25s infinite 15s;
+}
+
+.carousel-bg:nth-child(5) {
+    background-image: url("/static/images/cr-5.png");
+    animation: fadeEffect 25s infinite 20s;
+}
+.carousel-bg:nth-child(5) {
+    background-image: url("/static/images/cr-1.webp");
+    animation: fadeEffect 25s infinite 25s;
+    -webkit-animation: fadeEffect 25s infinite 25s;
+}
+
+hr{
+    width: 60%;
+    margin: 0 auto;
+    border: 3px solid black;
+    border-radius: 10px;
+    color: black;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+/* 🔥 Perfectly Looped Fade Effect */
+@keyframes fadeEffect {
+    0%, 4% { opacity: 0; }    /* Image starts hidden */
+    5%, 25% { opacity: 1; }   /* Image fades in */
+    26%, 50% { opacity: 1; }  /* Stays visible */
+    51%, 95% { opacity: 0; }  /* Fades out */
+    96%, 100% { opacity: 0; } /* Completely hidden before restart */
+}
+
+
+/* Overlay for darkened effect */
+
+
+
 
 .hero {
 
@@ -105,6 +212,7 @@ body {
         position: relative;
         z-index: 10;
         overflow: visible;
+        width: 100%;
     }
 }
 
@@ -140,12 +248,15 @@ svg {
     font-size: 1.7rem;
     margin: -1rem 1rem 4rem 1rem;
     color: white;
+    width: 70%;
+
 }
 
 .btn-primary {
     padding: 1rem 3rem;
     /*background-color: #8b6fdb;
-    */background-image: linear-gradient(130deg, rgba(147, 114, 237, 0.1) 40%, rgba(220, 172, 217, 0.2) 100%);
+    */
+    background-color: rgb(0, 0, 0, 0.5);
     color: #ffffff;
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -159,7 +270,7 @@ svg {
     -moz-transition: all 0.2s;
     -ms-transition: all 0.2s;
     -o-transition: all 0.2s;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    
     border-bottom: 3px solid black;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -171,7 +282,8 @@ svg {
 
 .btn-primary:hover {
     transform: scale(1.02);
-    s-webkit-transform: rotate(90deg);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 3px solid white;
     -moz-transform: scale(1.02);
     -ms-transform: scale(1.02);
     -o-transform: scale(1.02);
@@ -191,11 +303,11 @@ svg {
 .how-it-works {
     padding: 4rem 2rem;
     text-align: center;
-    background-color: rgba(220, 172, 217, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+    background-color: rgba(0,0,0, 0.05);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
     border-radius: 10px;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    /* border-top: 2px solid black; */
+    /* border-bottom: 2px solid black; */
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -216,32 +328,47 @@ svg {
     justify-content: center;
     gap: 2rem;
     width: 100%;
+    position: relative;
 }
 
+/* 🔥 Default Step Style */
 .step {
     background-color: var(--heading-colour);
-    background-image: linear-gradient(90deg, --heading-colour 80%, white);
     color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
     padding: 2rem 3rem;
     border-radius: 12px;
     width: 18rem;
-    transition: transform 0.3s;
-    -webkit-transition: transform 0.3s;
-    -moz-transition: transform 0.3s;
-    -ms-transition: transform 0.3s;
-    -o-transition: transform 0.3s;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
-
-
-    & p,
-    span {
-        font-size: 1.5rem;
-    }
+    opacity: 0.5; /* Less visible by default */
 }
+
+/* 🔄 Animating Each Step */
+.step:nth-child(1) {
+    animation: highlightStep 6s infinite 0s;
+    -webkit-animation: highlightStep 6s infinite 0s;
+}
+.step:nth-child(2) {
+    animation: highlightStep 6s infinite 2s;
+    -webkit-animation: highlightStep 6s infinite 2s;
+}
+.step:nth-child(3) {
+    animation: highlightStep 6s infinite 4s;
+    -webkit-animation: highlightStep 6s infinite 4s;
+}
+
+/* 🔥 Keyframes for Smooth Highlight Effect */
+@keyframes highlightStep {
+    0%, 100% { opacity: 0.5; transform: scale(1); }  /* Normal */
+    10%, 30% { opacity: 1; transform: scale(1.1); }  /* Highlighted */
+    40%, 100% { opacity: 0.5; transform: scale(1); } /* Back to normal */
+}
+
 
 i {
     font-size: 3rem;
@@ -251,7 +378,7 @@ i {
     transform: translateY(-5px);
 }
 
-/* === Benefits === */
+/* === Benefits Section Styling === */
 .benefits {
     padding: 4rem 2rem;
     width: 100%;
@@ -259,100 +386,108 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    & h2 {
-        font-size: 3rem;
-        color: var(--heading-colour);
-        text-decoration: underline;
-        margin-bottom: 4rem;
-        text-align: center;
-    }
+    text-align: center;
+    overflow: hidden;
 }
 
+.benefits h2 {
+    font-size: 3rem;
+    color: var(--heading-colour);
+    text-decoration: underline;
+    margin-bottom: 4rem;
+}
+
+/* === Modern Grid Layout === */
 .grid {
     display: grid;
-    grid-template-columns: repeat(2, 20rem);
-    align-items: center;
-    place-items: center;
-    gap: 0.1rem;
+    grid-template-columns: repeat(2, minmax(250px, 1fr)); /* Two columns */
+    gap: 2rem;
+    width: 80%;
+    max-width: 1000px;
 }
 
+/* === Benefit Box Styling === */
 .benefit {
-    background-color: var(--heading-colour);
+    background: linear-gradient(135deg, var(--heading-colour), #444);
     color: var(--white);
     padding: 2.5rem;
-
-
-    height: 10rem;
-    transition: transform 0.3s;
+    border-radius: 20px;
+    height: 12rem;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
 
-    & h3,
-    p {
-        margin: 0;
-        text-align: center;
-    }
+
+    transform: translateY(20px); /* Start slightly lower */
 }
 
+/* === Step-by-Step Animation with Unified Disappearance ===
 .benefit:nth-child(1) {
-    border-top-left-radius: 50px;
+    animation: fadeInStep 12s infinite 0s;
 }
-
 .benefit:nth-child(2) {
-    border-top-right-radius: 50px;
+    animation: fadeInStep 12s infinite 1.5s;
 }
-
 .benefit:nth-child(3) {
-    border-bottom-left-radius: 50px;
+    animation: fadeInStep 12s infinite 3s;
 }
-
 .benefit:nth-child(4) {
-    border-bottom-right-radius: 50px;
+    animation: fadeInStep 12s infinite 4.5s;
 }
 
+/* === Keyframes: Step-by-Step Appearance & Unified Disappearance === */
+@keyframes fadeInStep {
+    0%, 30% { opacity: 0; transform: translateY(20px); } /* Hidden */
+    35%, 80% { opacity: 1; transform: translateY(0); } /* Fade In */
+    85%, 90% { opacity: 1; transform: translateY(0); } /* Stay for 5s */
+    95%, 100% { opacity: 0; transform: translateY(20px); } /* All disappear together */
+} 
+
+/* === Hover Effect for Interaction === */
 .benefit:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
 }
+
+
+
 
 /* === CTA Section === */
 .cta {
     text-align: center;
     padding: 4rem 2rem;
- 
+
     color: var(--white);
     background-color: var(--heading-colour);
-    background-image: linear-gradient(180deg, var(--heading-colour) 20%, #232e6c 100%);
+    background: linear-gradient(180deg, var(--heading-colour) 30%, #444 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    width: 60%;
-    margin: auto;
+    width: 80%;
+    margin: 2rem auto;
     position: relative;
-    margin-top: 7rem;
+    margin-top: 12rem;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 
-    & h2{
+    & h2 {
         font-size: 2rem;
     }
-    
-    & .btn-primary{
+
+    & .btn-primary {
         width: 30%;
     }
 
-    & svg{
-        top: -10rem;
+    & svg {
+        top: -16rem;
         position: absolute;
-        
-       
     }
+
 
 }
 
@@ -360,11 +495,12 @@ i {
 .footer {
     margin-top: 2rem;
     background-color: var(--heading-colour);
- 
+
     color: white;
     padding: 2rem 1rem;
     text-align: center;
     position: relative;
+    box-shadow: rgba(182, 163, 241, 0.5) 0px 5px 10px;
 }
 
 .footer-container {
@@ -381,12 +517,12 @@ i {
     padding: 1rem;
     text-align: left;
 
-    & h2{
+    & h2 {
         margin-bottom: 0.6rem;
     }
 
-    & p{
-        padding-right:5rem;
+    & p {
+        padding-right: 5rem;
         line-height: 1.6rem;
         text-align: left;
         margin-bottom: 3rem;
@@ -432,6 +568,7 @@ i {
         flex-direction: column;
         text-align: center;
     }
+
     .footer-column {
         text-align: center;
     }

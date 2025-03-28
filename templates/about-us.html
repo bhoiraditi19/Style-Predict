@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}About - Business Sales Prediction{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about-us.css') }}">
+{% endblock %}
+
+{% block content %}
+<section id="about" class="about">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>About Us</h2>
+      <p>Discover how our AI-powered sales prediction system helps businesses make data-driven decisions and stay ahead of the competition.</p>
+    </div>
+    
+    <div class="row">
+      <div class="col-lg-6 fade-in">
+        <h3><i class="fas fa-brain"></i> How Prediction Works</h3>
+        <p>Our system utilizes <strong>XGBoost</strong>, a highly efficient machine learning algorithm, to analyze past sales trends and predict future outcomes. It considers multiple factors such as:</p>
+        <ul>
+          <li><i class="fas fa-chart-line"></i> Seasonal trends and demand fluctuations</li>
+          <li><i class="fas fa-users"></i> Customer demographics and buying behavior</li>
+          <li><i class="fas fa-box"></i> Product categories and market segments</li>
+          <li><i class="fas fa-money-bill-wave"></i> Payment methods and spending habits</li>
+        </ul>
+        <img src="/static/images/ai-process.png" alt="AI Prediction Process" class="image-fade-in">
+      </div>
+      <div class="col-lg-6 fade-in">
+        <h3><i class="fas fa-database"></i> Data Sources Used</h3>
+        <p>We ensure our predictions are based on high-quality, structured data that reflects real-world shopping patterns. Our data sources include:</p>
+        <ul>
+          <li><i class="fas fa-clock"></i> Sales records from the past 3 years</li>
+          <li><i class="fas fa-calendar-alt"></i> Seasonality-based purchasing trends</li>
+          <li><i class="fas fa-map-marker-alt"></i> Geographic purchasing preferences</li>
+          <li><i class="fas fa-tag"></i> Discount-based sales spikes</li>
+        </ul>
+        <img src="/static/images/data-source.png" alt="Data Sources" class="image-fade-in">
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-lg-6 fade-in">
+        <h3><i class="fas fa-shield-alt"></i> Privacy & Security</h3>
+        <p>Your privacy and security are our top priorities. Our system is designed to protect business data by:</p>
+        <ul>
+          <li><i class="fas fa-lock"></i> Using encryption to secure sensitive information</li>
+          <li><i class="fas fa-eye-slash"></i> Ensuring no personal data is shared with third parties</li>
+          <li><i class="fas fa-user-secret"></i> Providing anonymous data processing for privacy</li>
+        </ul>
+        <img src="/static/images/security.png" alt="Security Assurance" class="image-fade-in">
+      </div>
+      <div class="col-lg-6 fade-in">
+        <h3><i class="fas fa-users"></i> Meet the Team</h3>
+        <p>Behind every great system is a passionate team of developers.</p>
+        <ul>
+          <li><i class="fas fa-user"></i> <strong>Developer:</strong> Shailesh Hawale</li>
+          <li><i class="fas fa-envelope"></i> <strong>Contact Email:</strong> example@email.com</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section id="cta" class="cta">
+  <div class="container fade-in">
+    <div class="cta-content">
+      <h2>Ready to Make Smarter Business Decisions?</h2>
+      <a href="prediction" class="btn-primary">Start Predicting</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

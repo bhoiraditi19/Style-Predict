@@ -9,26 +9,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        {% block extra_css %}{% endblock %}
+    {% block extra_css %}{% endblock %}
 </head>
 
 <body>
 
     <!-- Header -->
     <header class="header">
-        <div class="logo">SaleSense</div>
+        <div class="logo">StylePredict</div>
         <nav class="nav">
             <a href="{{ url_for('home') }}">Home</a>
-            <a href="insights">Insights</a>
-            <a href="#data">Historical Data</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <!-- <a href="insights">Insights</a>
+            <a href="#data">Historical Data</a> -->
+            <a href="/about-us">About</a>
+            <a href="/contact">Contact</a>
         </nav>
     </header>
 
@@ -40,19 +40,19 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
-                <h2>SaleSense</h2>
-                <p>Helping businesses optimize sales with AI-driven insights.</p>
+                <h2>StylePredict</h2>
+                <p>Helping clothing businesses optimize sales with AI-driven insights.</p>
                 <p>&copy; 2025 SalesPredictor. All Rights Reserved.</p>
             </div>
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about-us">About Us</a></li>
+                    <!-- <li><a href="#">Services</a></li> -->
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-of-service">Terms of Service</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-column">

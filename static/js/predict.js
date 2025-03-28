@@ -148,16 +148,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const months = document.getElementById("months_to_predict").value;
 
-      alert(
-        JSON.stringify({
-          categories,
-          age_groups,
-          genders,
-          locations,
-          payment_methods,
-          months,
-        })
-      );
+      // alert(
+      //   JSON.stringify({
+      //     categories,
+      //     age_groups,
+      //     genders,
+      //     locations,
+      //     payment_methods,
+      //     months,
+      //   })
+      // );
 
       // Send data to backend
       const response = await fetch("/predict", {

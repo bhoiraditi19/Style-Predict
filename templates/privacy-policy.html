@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - Business Sales Prediction{% endblock %}
+
+{% block content %}
+<section class="policy-section">
+  <div class="policy-container">
+    <h1>Privacy Policy 🔒</h1>
+    <p>Last updated: March 2025</p>
+    <p>Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information.</p>
+
+    <h2>1. Information We Collect</h2>
+    <ul>
+      <li><strong>Personal Data:</strong> Name, email, and other contact details when you interact with us.</li>
+      <li><strong>Usage Data:</strong> Information about how you use our services.</li>
+      <li><strong>Cookies:</strong> Data collected to improve your browsing experience.</li>
+    </ul>
+
+    <h2>2. How We Use Your Data</h2>
+    <ul>
+      <li>To provide and improve our services.</li>
+      <li>To communicate updates and offers.</li>
+      <li>To ensure security and prevent fraud.</li>
+    </ul>
+
+    <h2>3. Data Protection</h2>
+    <p>We take security seriously and implement measures to protect your data.</p>
+
+    <h2>4. Your Rights</h2>
+    <ul>
+      <li>Access, update, or delete your personal data.</li>
+      <li>Opt-out of marketing communications.</li>
+    </ul>
+    
+    <h2>5. Contact Us</h2>
+    <p>If you have questions about this policy, email us at <a id="email" href="mailto:support@stylepredict.com">support@stylepredict.com</a></p>
+  </div>
+</section>
+
+<style>
+
+body{
+        background-color: black;
+    }
+
+    .policy-container p{
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.7rem;
+    }
+
+  .policy-section{
+    margin-top: 2rem;
+  }
+  .policy-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* margin-top: 1rem; */
+    margin: 2rem auto;
+    padding:6rem 4rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  }
+  .policy-container h1, .policy-container h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 2rem;
+    text-align: left;
+  }
+  .policy-container ul li {
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 5px 0;
+    color: #fff;
+    font-size: 1.4rem;
+  }
+
+  #email{
+    text-decoration: underline;
+    color: rgb(63, 140, 255);
+    letter-spacing: 0.08rem;
+
+}
+</style>
+{% endblock %}
