@@ -1,7 +1,10 @@
 from flask import Flask, request, jsonify, render_template
+import os
 from model import predict_data
+import pandas as pd
+from eda_images import generate_eda_images, get_image  # Importing image APIs
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static")
 
 # ✅ Home Route → Load Frontend
 @app.route('/')
@@ -14,7 +17,7 @@ def prediction():
 
 @app.route('/insights')
 def insights():
-    return render_template('insights.html')
+    return render_template('data-insights.html')
 
 @app.route('/about-us')
 def about_us():
@@ -28,8 +31,6 @@ def contact():
 def privacy():
     return render_template('privacy-policy.html')
 
-
-
 @app.route('/terms-of-service')
 def tos():
     return render_template('terms-of-service.html')
@@ -37,8 +38,6 @@ def tos():
 @app.route('/get-predictions')
 def get_predictions():
     return render_template('index.html')
-
-
 
 # ✅ Prediction Route → POST request from frontend
 @app.route('/predict', methods=['POST'])
@@ -55,7 +54,7 @@ def predict():
         age_groups = ensure_list(data.get("age_groups"))
         locations = ensure_list(data.get("locations"))
         payment_methods = ensure_list(data.get("payment_methods"))
-        
+
         # Validate months_to_predict
         months_to_predict = int(data.get("months"))
         if months_to_predict is None or not str(months_to_predict).isdigit():
@@ -83,6 +82,29 @@ def predict():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
-# ✅ Start the Flask server
+file_path = "data/clothing_shop_preprocessed_data.csv"
+df = pd.read_csv(file_path)
+
+@app.route("/api/dataset_overview", methods=["GET"])
+def dataset_overview():
+    """API to return dataset summary."""
+    summary = {
+        "Total Rows": len(df),
+        "Total Columns": len(df.columns),
+        "Dataset Size (MB)": round(df.memory_usage(deep=True).sum() / (1024 * 1024), 2),
+        "Columns": list(df.columns),
+        "Head": df.head(12).to_dict(orient="records"),  # Convert first 5 rows to JSON format
+    }
+    return jsonify(summary)
+
+# ✅ EDA Image Generation APIs (Imported)
+@app.route("/api/generate_eda_images")
+def eda_images():
+    return generate_eda_images()
+
+@app.route("/static/images/<filename>")
+def serve_image(filename):
+    return get_image(filename)
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+
+{% block title %}Data Insights - Business Sales Prediction{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/data-insights.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="insights-container">
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul>
+            <li>
+                <a onclick="toggleMenu('dataset-menu')">📊 Dataset Overview</a>
+                <ul id="dataset-menu" class="sub-menu">
+                    <li><a onclick="fetchDatasetSummary()">Dataset Summary</a></li>
+                </ul>
+            </li>
+            <li>
+                <a onclick="toggleMenu('revenue-menu')">📈 Revenue Trends</a>
+                <ul id="revenue-menu" class="sub-menu">
+                    <li><a onclick="showImage('monthly_revenue.png')">Monthly Revenue</a></li>
+                </ul>
+            </li>
+            <li>
+                <a onclick="toggleMenu('sales-menu')">📊 Sales Performance</a>
+                <ul id="sales-menu" class="sub-menu">
+                    <li><a onclick="showImage('top_categories.png')">Top-Selling Categories</a></li>
+                    <li><a onclick="showImage('worst_categories.png')">Worst-Selling Categories</a></li>
+                    <li><a onclick="showImage('top_locations.png')">Top 5 Locations</a></li>
+                    <li><a onclick="showImage('bottom_locations.png')">Bottom 5 Locations</a></li>
+                </ul>
+            </li>
+            <li>
+                <a onclick="toggleMenu('demographics-menu')">👥 Customer Demographics</a>
+                <ul id="demographics-menu" class="sub-menu">
+                    <li><a onclick="showImage('age_revenue.png')">Age Group vs Revenue</a></li>
+                    <li><a onclick="showImage('gender_revenue.png')">Gender-wise Revenue</a></li>
+                </ul>
+            </li>
+            <li>
+                <a onclick="toggleMenu('payment-menu')">💳 Payment Methods</a>
+                <ul id="payment-menu" class="sub-menu">
+                    <li><a onclick="showImage('payment_methods.png')">Payment Method Distribution</a></li>
+                    <li><a onclick="showImage('revenue_by_payment_method.png')">Revenue by Payment Method</a></li>
+                </ul>
+            </li>
+            <li>
+                <a onclick="toggleMenu('seasonality-menu')">🎉 Seasonality & Discounts</a>
+                <ul id="seasonality-menu" class="sub-menu">
+                    <li><a onclick="showImage('seasonal_revenue.png')">Seasonal Revenue</a></li>
+                    <li><a onclick="showImage('diwali_newyear_sales.png')">Diwali & New Year Sales</a></li>
+                    <li><a onclick="showImage('discount_impact.png')">Discount Impact on Sales</a></li>
+                </ul>
+            </li>
+            <li>
+                <a onclick="toggleMenu('growth-menu')">📊 Revenue Growth</a>
+                <ul id="growth-menu" class="sub-menu">
+                    <li><a onclick="showImage('mom_growth.png')">Month-over-Month Growth</a></li>
+                    <li><a onclick="showImage('peak_lowest_sales.png')">Peak & Lowest Sales Month</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="insights-content">
+        <h2>📌 Selected Insight</h2>
+        <div class="chart-container" id="chart-container">
+            <p id="blink-text">
+                Visualization will be shown here. Please select an image.</p>
+            <img id="displayed-image" src="" alt="Selected Visualization">
+
+            <div id="summary-container" class="summary-container">
+                <p id="total-rows">Total Rows: </p>
+                <p id="total-Columns">Total Columns: </p>
+                <p id="file-size">File Size: </p>
+                <div class="table-head">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Collapsible Menu & Dynamic Image Loading -->
+<script>
+    function toggleMenu(menuId) {
+        let allMenus = document.querySelectorAll(".sub-menu");
+
+        // Close all menus except the selected one
+        allMenus.forEach(subMenu => {
+            if (subMenu.id !== menuId) {
+                subMenu.style.display = "none";
+            }
+        });
+
+        let menu = document.getElementById(menuId);
+        menu.style.display = (menu.style.display === "block") ? "none" : "block";
+
+        // If another menu is selected, hide dataset summary
+        if (menuId !== "dataset-menu") {
+            let summaryContainer = document.getElementById("summary-container");
+            if (summaryContainer) {
+                summaryContainer.style.display = "none";
+            }
+        }
+    }
+
+    function showImage(imageName) {
+        let image = document.getElementById("displayed-image");
+        let container = document.getElementById("chart-container");
+
+        // Fade out effect before changing the image
+        image.style.opacity = 0;
+
+        setTimeout(() => {
+            image.src = "/static/images/" + imageName;
+            image.style.display = "block";
+            image.style.opacity = 1;
+        }, 300); // Delay for smooth transition
+
+        container.innerText = ""; // Remove placeholder text
+        container.appendChild(image); // Ensure image is part of container
+    }
+
+
+
+    async function fetchDatasetSummary() {
+        try {
+            console.log("Fetching dataset summary...");
+
+            let summaryContainer = document.getElementById("summary-container");
+
+            // If summary-container doesn't exist, create it
+            if (!summaryContainer) {
+                console.warn("summary-container not found. Creating it...");
+
+                let chartContainer = document.getElementById("chart-container");
+                if (!chartContainer) {
+                    console.error("Error: chart-container not found in the DOM.");
+                    return;
+                }
+
+                summaryContainer = document.createElement("div");
+                summaryContainer.id = "summary-container";
+                summaryContainer.classList.add("summary-container", "hidden"); // Initially hidden
+                summaryContainer.innerHTML = `
+                <p id="total-rows">Total Rows: </p>
+                <p id="total-Columns">Total Columns: </p>
+                <p id="file-size">File Size: </p>
+                <div class="table-head"></div>
+            `;
+                chartContainer.appendChild(summaryContainer);
+            }
+
+            // Ensure the container is hidden initially
+            summaryContainer.style.display = "none";
+
+            // Fetch dataset overview
+            const response = await fetch("/api/dataset_overview");
+            const data = await response.json();
+
+            // Update summary content
+            document.getElementById("total-rows").innerHTML = `<strong>Total Rows:</strong> ${data["Total Rows"]}`;
+            document.getElementById("total-Columns").innerHTML = `<strong>Total Columns:</strong> ${data["Total Columns"]}`;
+            document.getElementById("file-size").innerHTML = `<strong>File Size:</strong> ${data["Dataset Size (MB)"]} MB`;
+
+            // Generate table with column names
+            let tableHtml = "<table class='dataset-table'><thead><tr>";
+            data["Columns"].forEach(col => {
+                tableHtml += `<th>${col}</th>`;
+            });
+            tableHtml += "</tr></thead><tbody>";
+
+            // Add first 5 rows of data
+            data["Head"].forEach(row => {
+                tableHtml += "<tr>";
+                data["Columns"].forEach(col => {
+                    tableHtml += `<td>${row[col]}</td>`;
+                });
+                tableHtml += "</tr>";
+            });
+
+            tableHtml += "</tbody></table>";
+
+            // Insert table into the container
+            document.querySelector(".table-head").innerHTML = tableHtml;
+
+            // Hide image container if dataset summary is opened
+            let displayedImage = document.getElementById("displayed-image");
+            if (displayedImage) {
+                displayedImage.style.display = "none";
+            }
+
+            // **Ensure the summary container is visible**
+            console.log("Making summary-container visible...");
+            if (document.getElementById("blink-text") != null) {
+                document.getElementById("blink-text").style.visibility = "collapse";
+            }
+            summaryContainer.style.display = "grid";
+
+            // Apply fade-in effect after a delay
+            setTimeout(() => {
+                summaryContainer.classList.add("fade-in");
+            }, 100);
+
+        } catch (error) {
+            console.error("Error fetching dataset summary:", error);
+            let tableHead = document.querySelector(".table-head");
+            if (tableHead) {
+                tableHead.innerHTML = "<p class='error-message'>Error loading dataset summary.</p>";
+            }
+        }
+    }
+
+    async function GenerateImages() {
+        try {
+            const response = await fetch("/api/generate_eda_images");
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error fetching dataset overview:", error);
+        }
+    }
+
+
+    GenerateImages();
+</script>
+
+{% endblock %}
