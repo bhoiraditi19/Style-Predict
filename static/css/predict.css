@@ -63,7 +63,7 @@ body {
         border-radius: 10px;
         filter: brightness(25%) blur(1px);
         -webkit-filter: brightness(25%) blur(1px);
-}
+    }
 }
 
 .chart-container {
@@ -382,31 +382,37 @@ td {
     /* background: rgba(249, 249, 249, 0.02); */
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    #monthly-results thead {
-        display: none;
-    }
+@media screen and (max-width: 412px) {
 
-    #monthly-results tbody tr {
-        display: block;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-
-    }
-
-    #monthly-results tbody td {
-        display: block;
+    .header {
+        flex-direction: column;
+        padding: 1rem;
         text-align: center;
-        padding: 10px;
-        font-size: 14px;
     }
 
-    #monthly-results tbody td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        float: left;
-        color: #007bff;
+    .prediction-container {
+        padding: 2rem 1rem;
+      
+
+        & h1 {
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        & #prediction-form {
+            grid-template-columns: 1fr;
+            padding: 0rem;
+            margin-top: 3rem;
+
+            & .form-group{
+                grid-column: span 2;
+            }
+        }
+
+        .chart-container{
+            display: none;
+        }
+
+        
     }
 }
