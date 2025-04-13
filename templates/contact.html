@@ -14,7 +14,7 @@
     
     <div class="contact-form">
       <h2>Contact Form</h2>
-      <form action="/submit_contact" method="POST">
+      <form action="/submit_contact" method="POST" id="contactForm">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
@@ -69,4 +69,34 @@
     </div>
   </div>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      const response = await fetch('/submit_contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      const result = await response.json();
+      alert(result.message);
+
+       // ✅ Clear the form
+       if (response.ok) {
+        contactForm.reset();
+      }
+    });
+  });
+</script>
+
 {% endblock %}

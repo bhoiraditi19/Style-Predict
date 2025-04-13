@@ -103,6 +103,18 @@ def generate_eda_images():
     save_chart(fig, "bottom_locations.png")
 
     ## 👥 Age Group vs Revenue
+    age_revenue = df.groupby("Gender")["Total_Revenue"].sum()
+    fig, ax = plt.subplots(figsize=(12, 8))
+    sns.barplot(x=age_revenue.index, y=age_revenue.values, ax=ax, palette="Purples")
+    ax.set_title("Revenue by Gender", fontsize=16)
+    ax.set_xlabel("Gender", fontsize=14)
+    ax.set_ylabel("Total Revenue (₹)", fontsize=14)
+    # ✅ Ensure formatter is applied
+    formatter = plt.FuncFormatter(format_inr)
+    ax.yaxis.set_major_formatter(formatter)
+    save_chart(fig, "gender_revenue.png")
+
+    ## 👥 Age Group vs Revenue
     age_revenue = df.groupby("Age_Group")["Total_Revenue"].sum()
     fig, ax = plt.subplots(figsize=(12, 8))
     sns.barplot(x=age_revenue.index, y=age_revenue.values, ax=ax, palette="Purples")

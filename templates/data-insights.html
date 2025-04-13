@@ -44,7 +44,7 @@
             <li>
                 <a onclick="toggleMenu('payment-menu')">💳 Payment Methods</a>
                 <ul id="payment-menu" class="sub-menu">
-                    <li><a onclick="showImage('payment_methods.png')">Payment Method Distribution</a></li>
+                    <li><a onclick="showImage('payment_method_distribution.png')">Payment Method Distribution</a></li>
                     <li><a onclick="showImage('revenue_by_payment_method.png')">Revenue by Payment Method</a></li>
                 </ul>
             </li>
@@ -109,24 +109,44 @@
             }
         }
     }
-
+    
     function showImage(imageName) {
-        let image = document.getElementById("displayed-image");
-        let container = document.getElementById("chart-container");
+        const container = document.getElementById("chart-container");
 
-        // Fade out effect before changing the image
-        image.style.opacity = 0;
+        // Hide summary if it's open
+        const summaryContainer = document.getElementById("summary-container");
+        if (summaryContainer) {
+            summaryContainer.style.display = "none";
+        }
 
+        // Hide blink text
+        const blinkText = document.getElementById("blink-text");
+        if (blinkText) {
+            blinkText.style.display = "none";
+        }
+
+        // Show loader
+        container.innerHTML = `<div class="loader"></div>`;
+
+        // Delay execution slightly so loader renders
         setTimeout(() => {
-            image.src = "/static/images/" + imageName;
-            image.style.display = "block";
-            image.style.opacity = 1;
-        }, 300); // Delay for smooth transition
+            const img = new Image();
+            img.src = `/static/images/${imageName}`;
+            img.id = "displayed-image";
+            img.style.opacity = 0;
+            img.style.transition = "opacity 0.4s ease";
 
-        container.innerText = ""; // Remove placeholder text
-        container.appendChild(image); // Ensure image is part of container
+            img.onload = () => {
+                container.innerHTML = ""; // Remove loader
+                img.style.opacity = 1;
+                container.appendChild(img);
+            };
+
+            img.onerror = () => {
+                container.innerHTML = `<p class='error-message'>❌ Failed to load image: ${imageName}</p>`;
+            };
+        }, 10); // give browser time to paint loader
     }
-
 
 
     async function fetchDatasetSummary() {

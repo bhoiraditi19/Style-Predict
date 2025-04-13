@@ -3,6 +3,13 @@ import os
 from model import predict_data
 import pandas as pd
 from eda_images import generate_eda_images, get_image  # Importing image APIs
+import smtplib
+from email.mime.text import MIMEText
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 app = Flask(__name__, static_folder="static")
 
@@ -105,6 +112,44 @@ def eda_images():
 @app.route("/static/images/<filename>")
 def serve_image(filename):
     return get_image(filename)
+
+@app.route('/submit_contact', methods=['POST'])
+def submit_contact():
+    data = request.get_json()
+    name = data.get('name')
+    email = data.get('email')
+    message = data.get('message')
+
+    email_body = f"""
+    You received a new contact form submission:
+
+    Name: {name}
+    Email: {email}
+    Message:
+    {message}
+    """
+
+    try:
+        # Email sending logic
+        send_email("shaileshhawale64@gmail.com", "New Contact Form Submission", email_body)
+        return jsonify({'message': 'Message sent successfully!'}), 200
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({'message': 'Failed to send message.'}), 500
+
+def send_email(to_email, subject, body):
+    sender_email = os.environ.get("SENDER_EMAIL")
+    sender_password = os.environ.get("SENDER_PASSWORD")
+
+    msg = MIMEText(body)
+    msg['Subject'] = subject
+    msg['From'] = sender_email
+    msg['To'] = to_email
+
+    # Using Gmail SMTP (you can change this if needed)
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+        server.login(sender_email, sender_password)
+        server.send_message(msg)
 
 if __name__ == '__main__':
     app.run(debug=True)
