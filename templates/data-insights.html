@@ -109,7 +109,7 @@
             }
         }
     }
-    
+
     function showImage(imageName) {
         const container = document.getElementById("chart-container");
 
@@ -148,94 +148,78 @@
         }, 10); // give browser time to paint loader
     }
 
+async function fetchDatasetSummary() {
+    try {
+        console.log("Fetching dataset summary...");
 
-    async function fetchDatasetSummary() {
-        try {
-            console.log("Fetching dataset summary...");
+        let chartContainer = document.getElementById("chart-container");
 
-            let summaryContainer = document.getElementById("summary-container");
+        // Show loader while fetching summary
+        chartContainer.innerHTML = `<div class="loader"></div>`;
 
-            // If summary-container doesn't exist, create it
-            if (!summaryContainer) {
-                console.warn("summary-container not found. Creating it...");
+        // Fetch dataset overview from backend
+        const response = await fetch("/api/dataset_overview");
+        const data = await response.json();
 
-                let chartContainer = document.getElementById("chart-container");
-                if (!chartContainer) {
-                    console.error("Error: chart-container not found in the DOM.");
-                    return;
-                }
+        // Remove loader
+        chartContainer.innerHTML = "";
 
-                summaryContainer = document.createElement("div");
-                summaryContainer.id = "summary-container";
-                summaryContainer.classList.add("summary-container", "hidden"); // Initially hidden
-                summaryContainer.innerHTML = `
-                <p id="total-rows">Total Rows: </p>
-                <p id="total-Columns">Total Columns: </p>
-                <p id="file-size">File Size: </p>
-                <div class="table-head"></div>
-            `;
-                chartContainer.appendChild(summaryContainer);
-            }
+        // Create summary container
+        const summaryContainer = document.createElement("div");
+        summaryContainer.id = "summary-container";
+        summaryContainer.classList.add("summary-container");
 
-            // Ensure the container is hidden initially
-            summaryContainer.style.display = "none";
+        summaryContainer.innerHTML = `
+            <p id="total-rows"><strong>Total Rows:</strong> ${data["Total Rows"]}</p>
+            <p id="total-Columns"><strong>Total Columns:</strong> ${data["Total Columns"]}</p>
+            <p id="file-size"><strong>File Size:</strong> ${data["Dataset Size (MB)"]} MB</p>
+            <div class="table-head"></div>
+        `;
 
-            // Fetch dataset overview
-            const response = await fetch("/api/dataset_overview");
-            const data = await response.json();
+        // Create table for first few rows
+        let tableHtml = "<table class='dataset-table'><thead><tr>";
+        data["Columns"].forEach(col => {
+            tableHtml += `<th>${col}</th>`;
+        });
+        tableHtml += "</tr></thead><tbody>";
 
-            // Update summary content
-            document.getElementById("total-rows").innerHTML = `<strong>Total Rows:</strong> ${data["Total Rows"]}`;
-            document.getElementById("total-Columns").innerHTML = `<strong>Total Columns:</strong> ${data["Total Columns"]}`;
-            document.getElementById("file-size").innerHTML = `<strong>File Size:</strong> ${data["Dataset Size (MB)"]} MB`;
-
-            // Generate table with column names
-            let tableHtml = "<table class='dataset-table'><thead><tr>";
+        data["Head"].forEach(row => {
+            tableHtml += "<tr>";
             data["Columns"].forEach(col => {
-                tableHtml += `<th>${col}</th>`;
+                tableHtml += `<td>${row[col]}</td>`;
             });
-            tableHtml += "</tr></thead><tbody>";
+            tableHtml += "</tr>";
+        });
 
-            // Add first 5 rows of data
-            data["Head"].forEach(row => {
-                tableHtml += "<tr>";
-                data["Columns"].forEach(col => {
-                    tableHtml += `<td>${row[col]}</td>`;
-                });
-                tableHtml += "</tr>";
-            });
+        tableHtml += "</tbody></table>";
+        summaryContainer.querySelector(".table-head").innerHTML = tableHtml;
 
-            tableHtml += "</tbody></table>";
-
-            // Insert table into the container
-            document.querySelector(".table-head").innerHTML = tableHtml;
-
-            // Hide image container if dataset summary is opened
-            let displayedImage = document.getElementById("displayed-image");
-            if (displayedImage) {
-                displayedImage.style.display = "none";
-            }
-
-            // **Ensure the summary container is visible**
-            console.log("Making summary-container visible...");
-            if (document.getElementById("blink-text") != null) {
-                document.getElementById("blink-text").style.visibility = "collapse";
-            }
-            summaryContainer.style.display = "grid";
-
-            // Apply fade-in effect after a delay
-            setTimeout(() => {
-                summaryContainer.classList.add("fade-in");
-            }, 100);
-
-        } catch (error) {
-            console.error("Error fetching dataset summary:", error);
-            let tableHead = document.querySelector(".table-head");
-            if (tableHead) {
-                tableHead.innerHTML = "<p class='error-message'>Error loading dataset summary.</p>";
-            }
+        // Hide any previously displayed image
+        const displayedImage = document.getElementById("displayed-image");
+        if (displayedImage) {
+            displayedImage.style.display = "none";
         }
+
+        // Hide blinking text if visible
+        const blinkText = document.getElementById("blink-text");
+        if (blinkText) {
+            blinkText.style.visibility = "collapse";
+        }
+
+        // Append and show summary
+        chartContainer.appendChild(summaryContainer);
+        summaryContainer.style.display = "grid";
+
+        setTimeout(() => {
+            summaryContainer.classList.add("fade-in");
+        }, 100);
+
+    } catch (error) {
+        console.error("Error fetching dataset summary:", error);
+        const chartContainer = document.getElementById("chart-container");
+        chartContainer.innerHTML = "<p class='error-message'>❌ Error loading dataset summary.</p>";
     }
+}
 
     async function GenerateImages() {
         try {
