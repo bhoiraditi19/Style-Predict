@@ -38,51 +38,81 @@
 </section>
 
 <style>
-body{
-    background-color: black;
-}
-
-.policy-container p{
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.7rem;
-}
-
-.policy-section{
-  margin-top: 2rem;
-}
-.policy-container {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin: 2rem auto;
-  padding: 6rem 4rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-}
-.policy-container h1, .policy-container h2 {
-  color: #fff;
-  text-align: center;
-  font-size: 3rem;
-  margin-top: 2rem;
-  text-align: left;
-}
-.policy-container ul li {
-  padding: 8px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  margin: 5px 0;
-  color: #fff;
-  font-size: 1.4rem;
-}
-
-#email{
-  text-decoration: underline;
-  color: rgb(63, 140, 255);
-  letter-spacing: 0.08rem;
-}
-</style>
+  body {
+      background-color: black;
+  }
+  
+  .policy-section {
+      margin-top: 2rem;
+  }
+  
+  .policy-container {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem auto;
+      padding: 6rem 4rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .policy-container h1, .policy-container h2 {
+      color: #fff;
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 2rem;
+      text-align: left;
+  }
+  
+  .policy-container p {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.7rem;
+  }
+  
+  .policy-container ul li {
+      padding: 8px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      margin: 5px 0;
+      color: #fff;
+      font-size: 1.4rem;
+  }
+  
+  #email {
+      text-decoration: underline;
+      color: rgb(63, 140, 255);
+      letter-spacing: 0.08rem;
+  }
+  
+  /* Media Query for Small Screens */
+  @media screen and (max-width: 576px) {
+      .policy-container {
+          width: 90%;
+          padding: 3rem 2rem;
+          gap: 1.5rem;
+      }
+  
+      .policy-container h1, .policy-container h2 {
+          font-size: 1.99rem;
+          margin-top: 1.5rem;
+          margin-bottom: 1rem;
+          text-align: left;
+      }
+  
+      .policy-container p {
+          font-size: 1.2rem;
+          margin-bottom: 1.5rem;
+      }
+  
+      .policy-container ul li {
+          font-size: 1rem;
+          padding: 6px;
+      }
+  }
+  </style>
+  
 {% endblock %}
