@@ -114,7 +114,6 @@ Add interactive graphs using Plotly for live updates
 
 Deploy live version on Render or another cloud platform
 
-
 📚 What I Learned:
 End-to-end ML pipeline integration in a web app
 
@@ -130,6 +129,7 @@ Building clean, scalable folder structures for web apps
 
 🙋‍♂️ Author
 Shailesh Hawale
+GitHub Profile
 Email: shaileshhawale004@gmail.com
 
 
