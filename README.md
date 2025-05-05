@@ -129,9 +129,9 @@ Then open http://localhost:5000 in your browser.
 **Shailesh Hawale**
 
 - 📧 Email: [shaileshhawale004@gmail.com](mailto:shaileshhawale004@gmail.com)  
-- 🐙 GitHub: [ShaileshHawale](https://github.com/shaileshhawale)
+- 🐙 GitHub: [ShaileshHawale](https://github.com/HawaleShailesh004)
 
-Email: [shaileshhawale004@gmail.com](mailto:shaileshhawale004@gmail.com)
+
 
 
 
