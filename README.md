@@ -9,7 +9,7 @@ https://fashionforecast-h008.onrender.com/
 
 ## 💻 Tech Stack Used
 
-- **Frontend**: HTML, CSS, Bootstrap, JavaScript
+- **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Python (Flask)
 - **Machine Learning**: XGBoost, Scikit-learn, Pandas, NumPy
 - **Visualization**: Matplotlib, Seaborn, Plotly
@@ -26,8 +26,6 @@ It includes detailed visualizations of trends, payment methods, and predicted sa
 To combine my knowledge of machine learning and web development into a full-stack project that solves a real-world business problem — helping businesses forecast future sales with clarity and interactivity.
 
 ---
-
-## 🖼️ Screenshots
 
 ## 🖼️ Screenshots
 
