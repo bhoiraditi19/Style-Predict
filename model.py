@@ -130,7 +130,7 @@ def predict_data(categories, genders, age_groups, locations, payment_methods, mo
     monthly_revenue = filtered_df.groupby(['Year', 'Month'])['Predicted_Revenue'].sum().reset_index()
     total_revenue = monthly_revenue['Predicted_Revenue'].sum()
 
-    monthly_revenue['Predicted_Revenue'] = monthly_revenue['Predicted_Revenue'] / 5
+    # monthly_revenue['Predicted_Revenue'] = monthly_revenue['Predicted_Revenue'] / 5
     monthly_revenue['Predicted_Revenue'] = monthly_revenue['Predicted_Revenue'].astype('float64').round(2)
 
  
