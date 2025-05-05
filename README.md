@@ -29,21 +29,24 @@ To combine my knowledge of machine learning and web development into a full-stac
 
 ## 🖼️ Screenshots
 
-| Dataset Summary | Feature Importance |
-|------------------|----------------------|
-| ![Dataset](screenshots/dataset_summary.png) | ![Feature](screenshots/feature_importance.png) |
+## 🖼️ Screenshots
 
-| Monthly Trends | Payment Distribution |
-|------------------|----------------------|
-| ![Trend](screenshots/monthly_revenue.png) | ![Payment](screenshots/payment_methods.png) |
+| Home Page | Prediction Page |
+|-----------|------------------|
+| ![Home](screenshots/HomePage.png) | ![Predict](screenshots/Prediction.png) |
 
-| Prediction Page | Home Page |
-|------------------|------------------|
-| ![Predict](screenshots/prediction_page.png) | ![Home](screenshots/homepage.png) |
+| Data Insights Page |
+|--------------------|
+| ![Dataset](screenshots/datainsights.png) |
 
-| About Us | |
-|------------------|------------------|
-| ![About](screenshots/about_us.png) | |
+| Contact Us | Privacy Policy |
+|------------|----------------|
+| ![Contact](screenshots/contact.png) | ![Privacy](screenshots/privacy-policy.png) |
+
+| About Us |
+|----------|
+| ![About](screenshots/about.png) |
+
 
 ---
 
@@ -102,34 +105,35 @@ pip install -r requirements.txt
 # Run the application
 python app.py
 
+```
 Then open http://localhost:5000 in your browser.
 
-🚧 Future Improvements / What I Learned
-🔧 Future Plans:
-Improve responsiveness of the Insights page
+# 🚧 Future Improvements / What I Learned 🔧
 
-Add export options (CSV/PDF) for predictions
+## Future Plans:
+- **Improve the responsiveness** of the Insights page for a better user experience.
+- **Add export options** (CSV/PDF) to allow easy downloading of predictions and results.
+- **Incorporate interactive graphs** using [Plotly](https://plotly.com/) to provide live updates and real-time data visualizations.
+- **Deploy the live version** on [Render](https://render.com/) or another cloud platform to ensure scalability and accessibility.
 
-Add interactive graphs using Plotly for live updates
+## What I Learned:
+- **End-to-End ML Pipeline Integration**: Gained hands-on experience integrating the machine learning pipeline within a web app.
+- **XGBoost Model**: Trained and deployed an XGBoost model to make accurate predictions.
+- **Backend Image Rendering for EDA**: Implemented image rendering in the backend to support exploratory data analysis (EDA) effectively.
+- **Frontend/Backend Interaction**: Facilitated seamless communication between the frontend and backend using Flask templates.
+- **Dynamic Predictions with Filters**: Utilized practical filter implementation to create dynamic, user-tailored predictions.
+- **Clean, Scalable Folder Structures**: Built a maintainable and scalable folder structure for the web app to enhance collaboration and project longevity.
 
-Deploy live version on Render or another cloud platform
+## 🙋‍♂️ Author
+
+**Shailesh Hawale**
+
+- 📧 Email: [shaileshhawale004@gmail.com](mailto:shaileshhawale004@gmail.com)  
+- 🐙 GitHub: [ShaileshHawale](https://github.com/shaileshhawale)
+
+Email: [shaileshhawale004@gmail.com](mailto:shaileshhawale004@gmail.com)
 
 
-📚 What I Learned:
-End-to-end ML pipeline integration in a web app
 
-XGBoost model training and deployment
-
-Backend image rendering for EDA
-
-Frontend/backend interaction using Flask templates
-
-Practical use of filters for dynamic prediction
-
-Building clean, scalable folder structures for web apps
-
-🙋‍♂️ Author
-Shailesh Hawale
-Email: shaileshhawale004@gmail.com
 
 
