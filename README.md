@@ -111,8 +111,6 @@ Then open http://localhost:5000 in your browser.
 ## Future Plans:
 - **Improve the responsiveness** of the Insights page for a better user experience.
 - **Add export options** (CSV/PDF) to allow easy downloading of predictions and results.
-- **Incorporate interactive graphs** using [Plotly](https://plotly.com/) to provide live updates and real-time data visualizations.
-- **Deploy the live version** on [Render](https://render.com/) or another cloud platform to ensure scalability and accessibility.
 
 ## What I Learned:
 - **End-to-End ML Pipeline Integration**: Gained hands-on experience integrating the machine learning pipeline within a web app.
