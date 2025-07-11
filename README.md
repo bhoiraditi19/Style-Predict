@@ -1,9 +1,23 @@
-# StylePredict
-Clothing Store Sales Prediction Model
+# 👗 StylePredict – Clothing Store Sales Prediction Model
 
+> ML-powered web app to analyze and forecast e-commerce clothing sales with smart dashboards.
+
+![Home Preview](screenshots/HomePage.png)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![HTML](https://img.shields.io/badge/HTML-5-E34F26?logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=yellow)
+![Flask](https://img.shields.io/badge/Backend-Flask-000000?logo=flask)
+![XGBoost](https://img.shields.io/badge/Model-XGBoost-orange)
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![Deployment](https://img.shields.io/badge/Deployed%20On-Render-430098?logo=render)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+
+---
 
 ## 🔗 Live Demo  
-https://fashionforecast-h008.onrender.com/
+🌐 https://fashionforecast-h008.onrender.com/
 
 ---
 
