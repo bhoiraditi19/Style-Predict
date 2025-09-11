@@ -133,6 +133,9 @@ Then open http://localhost:5000 in your browser.
 - **Frontend/Backend Interaction**: Facilitated seamless communication between the frontend and backend using Flask templates.
 - **Dynamic Predictions with Filters**: Utilized practical filter implementation to create dynamic, user-tailored predictions.
 - **Clean, Scalable Folder Structures**: Built a maintainable and scalable folder structure for the web app to enhance collaboration and project longevity.
+  
+## License
+This project is licensed under the [MIT License](LICENSE).
 
 ## 🙋‍♂️ Author
 
