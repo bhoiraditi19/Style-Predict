@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}How It Works - Business Sales Prediction{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/how_it_works.css') }}">
+{% endblock %}
+
+{% block content %}
+<section id="how-it-works" class="how-it-works">
+  <div class="container" style="background-color: white;">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">
+      Understand how our Clothing Sales Prediction system works in just 4 steps.
+    </p>
+
+    <!-- Card Layout -->
+    <div class="cards-container">
+      <!-- Step 1 -->
+      <div class="card">
+        <div class="step-number">1</div>
+        <i class="fas fa-filter icon"></i>
+        <h3>Input Your Filters</h3>
+        <p>
+          Choose product category, customer group, location, payment method, and forecast horizon (1–12 months) to customize your prediction.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="card">
+        <div class="step-number">2</div>
+        <i class="fas fa-brain icon"></i>
+        <h3>Generate Prediction</h3>
+        <p>
+          Our <strong>XGBoost ML model</strong> processes historical sales data and identifies patterns to generate future demand predictions.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="card">
+        <div class="step-number">3</div>
+        <i class="fas fa-chart-line icon"></i>
+        <h3>View Results</h3>
+        <ul>
+          <li>Forecasted sales trends</li>
+          <li>Product/category performance insights</li>
+          <li>Customer segment breakdown</li>
+        </ul>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="card">
+        <div class="step-number">4</div>
+        <i class="fas fa-lightbulb icon"></i>
+        <h3>Make Smarter Decisions</h3>
+        <p>
+          Use the forecasts to optimize inventory planning, design marketing strategies, and stay ahead of seasonal demand shifts.
+        </p>
+      </div>
+    </div>
+
+    <!-- Note -->
+    <div class="note">
+      ⚠️ <strong>Note:</strong> Forecasts are based on past data and may vary depending on real-world conditions.
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section id="cta" class="cta">
+  <div class="container">
+    <h2>Ready to Predict Your Business Sales?</h2>
+    <a href="{{ url_for('prediction') }}" class="btn-primary">Start Predicting</a>
+  </div>
+</section>
+{% endblock %}

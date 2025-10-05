@@ -32,6 +32,10 @@ def prediction():
 def insights():
     return render_template('data-insights.html')
 
+@app.route('/how_it_works')
+def how_it_works ():
+    return render_template('how_it_works.html')
+
 @app.route('/about-us')
 def about_us():
     return render_template('about-us.html')
