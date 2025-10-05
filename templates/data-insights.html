@@ -16,52 +16,72 @@
             <li>
                 <a onclick="toggleMenu('dataset-menu')">📊 Dataset Overview</a>
                 <ul id="dataset-menu" class="sub-menu">
-                    <li><a onclick="fetchDatasetSummary()">Dataset Summary</a></li>
+                    <li>
+                        <a onclick="fetchDatasetSummary()">Dataset Summary</a>
+                        <button class="download-sub-pdf btn" data-report="Dataset Summary" style="margin-top: 5px;">Download PDF</button>
+                    </li>
                 </ul>
             </li>
             <li>
                 <a onclick="toggleMenu('revenue-menu')">📈 Revenue Trends</a>
                 <ul id="revenue-menu" class="sub-menu">
-                    <li><a onclick="showImage('monthly_revenue.png')">Monthly Revenue</a></li>
-                </ul>
-            </li>
-            <li>
-                <a onclick="toggleMenu('sales-menu')">📊 Sales Performance</a>
-                <ul id="sales-menu" class="sub-menu">
-                    <li><a onclick="showImage('top_categories.png')">Top-Selling Categories</a></li>
-                    <li><a onclick="showImage('worst_categories.png')">Worst-Selling Categories</a></li>
-                    <li><a onclick="showImage('top_locations.png')">Top 5 Locations</a></li>
-                    <li><a onclick="showImage('bottom_locations.png')">Bottom 5 Locations</a></li>
-                </ul>
-            </li>
+            <li><a onclick="showImage('monthly_revenue.png')">Monthly Revenue</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Monthly Revenue">Download PDF</button></li>
+        </ul>
+    </li>
+    <li>
+        <a onclick="toggleMenu('sales-menu')">📊 Sales Performance</a>
+        <ul id="sales-menu" class="sub-menu">
+            <li><a onclick="showImage('top_categories.png')">Top-Selling Categories</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Top-Selling Categories">Download PDF</button></li>
+            <li><a onclick="showImage('worst_categories.png')">Worst-Selling Categories</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Worst-Selling Categories">Download PDF</button></li>
+            <li><a onclick="showImage('top_locations.png')">Top 5 Locations</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Top 5 Locations">Download PDF</button></li>
+            <li><a onclick="showImage('bottom_locations.png')">Bottom 5 Locations</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Bottom 5 Locations">Download PDF</button></li>
+        </ul>
+    </li>
             <li>
                 <a onclick="toggleMenu('demographics-menu')">👥 Customer Demographics</a>
                 <ul id="demographics-menu" class="sub-menu">
-                    <li><a onclick="showImage('age_revenue.png')">Age Group vs Revenue</a></li>
-                    <li><a onclick="showImage('gender_revenue.png')">Gender-wise Revenue</a></li>
-                </ul>
-            </li>
-            <li>
-                <a onclick="toggleMenu('payment-menu')">💳 Payment Methods</a>
-                <ul id="payment-menu" class="sub-menu">
-                    <li><a onclick="showImage('payment_method_distribution.png')">Payment Method Distribution</a></li>
-                    <li><a onclick="showImage('revenue_by_payment_method.png')">Revenue by Payment Method</a></li>
-                </ul>
-            </li>
+            <li><a onclick="showImage('age_revenue.png')">Age Group vs Revenue</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Age Group vs Revenue">Download PDF</button></li>
+            <li><a onclick="showImage('gender_revenue.png')">Gender-wise Revenue</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Gender-wise Revenue">Download PDF</button></li>
+        </ul>
+    </li>
+    <li>
+        <a onclick="toggleMenu('payment-menu')">💳 Payment Methods</a>
+        <ul id="payment-menu" class="sub-menu">
+            <li><a onclick="showImage('payment_method_distribution.png')">Payment Method Distribution</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Payment Method Distribution">Download PDF</button></li>
+            <li><a onclick="showImage('revenue_by_payment_method.png')">Revenue by Payment Method</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Revenue by Payment Method">Download PDF</button></li>
+        </ul>
+    </li>
             <li>
                 <a onclick="toggleMenu('seasonality-menu')">🎉 Seasonality & Discounts</a>
                 <ul id="seasonality-menu" class="sub-menu">
-                    <li><a onclick="showImage('seasonal_revenue.png')">Seasonal Revenue</a></li>
-                    <li><a onclick="showImage('diwali_newyear_sales.png')">Diwali & New Year Sales</a></li>
-                    <li><a onclick="showImage('discount_impact.png')">Discount Impact on Sales</a></li>
-                </ul>
-            </li>
+            <li><a onclick="showImage('seasonal_revenue.png')">Seasonal Revenue</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Seasonal Revenue">Download PDF</button></li>
+            <li><a onclick="showImage('diwali_newyear_sales.png')">Diwali & New Year Sales</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Diwali & New Year Sales">Download PDF</button></li>
+            <li><a onclick="showImage('discount_impact.png')">Discount Impact on Sales</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Discount Impact on Sales">Download PDF</button></li>
+        </ul>
+    </li>
+    <li>
+        <a onclick="toggleMenu('growth-menu')">📊 Revenue Growth</a>
+        <ul id="growth-menu" class="sub-menu">
+            <li><a onclick="showImage('mom_growth.png')">Month-over-Month Growth</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Month-over-Month Growth">Download PDF</button></li>
+            <li><a onclick="showImage('peak_lowest_sales.png')">Peak & Lowest Sales Month</a></li>
+            <li><button class="download-sub-pdf btn" data-report="Peak & Lowest Sales Month">Download PDF</button></li>
+        </ul>
+    </li>
             <li>
-                <a onclick="toggleMenu('growth-menu')">📊 Revenue Growth</a>
-                <ul id="growth-menu" class="sub-menu">
-                    <li><a onclick="showImage('mom_growth.png')">Month-over-Month Growth</a></li>
-                    <li><a onclick="showImage('peak_lowest_sales.png')">Peak & Lowest Sales Month</a></li>
-                </ul>
+                <!-- Removed the Download PDF button as per user request -->
             </li>
         </ul>
     </nav>
@@ -88,65 +108,65 @@
 
 <!-- JavaScript for Collapsible Menu & Dynamic Image Loading -->
 <script>
-    function toggleMenu(menuId) {
-        let allMenus = document.querySelectorAll(".sub-menu");
+function toggleMenu(menuId) {
+    let allMenus = document.querySelectorAll(".sub-menu");
 
-        // Close all menus except the selected one
-        allMenus.forEach(subMenu => {
-            if (subMenu.id !== menuId) {
-                subMenu.style.display = "none";
-            }
-        });
-
-        let menu = document.getElementById(menuId);
-        menu.style.display = (menu.style.display === "block") ? "none" : "block";
-
-        // If another menu is selected, hide dataset summary
-        if (menuId !== "dataset-menu") {
-            let summaryContainer = document.getElementById("summary-container");
-            if (summaryContainer) {
-                summaryContainer.style.display = "none";
-            }
+    // Close all menus except the selected one
+    allMenus.forEach(subMenu => {
+        if (subMenu.id !== menuId) {
+            subMenu.style.display = "none";
         }
-    }
+    });
 
-    function showImage(imageName) {
-        const container = document.getElementById("chart-container");
+    let menu = document.getElementById(menuId);
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
 
-        // Hide summary if it's open
-        const summaryContainer = document.getElementById("summary-container");
+    // If another menu is selected, hide dataset summary
+    if (menuId !== "dataset-menu") {
+        let summaryContainer = document.getElementById("summary-container");
         if (summaryContainer) {
             summaryContainer.style.display = "none";
         }
-
-        // Hide blink text
-        const blinkText = document.getElementById("blink-text");
-        if (blinkText) {
-            blinkText.style.display = "none";
-        }
-
-        // Show loader
-        container.innerHTML = `<div class="loader"></div>`;
-
-        // Delay execution slightly so loader renders
-        setTimeout(() => {
-            const img = new Image();
-            img.src = `/static/images/${imageName}`;
-            img.id = "displayed-image";
-            img.style.opacity = 0;
-            img.style.transition = "opacity 0.4s ease";
-
-            img.onload = () => {
-                container.innerHTML = ""; // Remove loader
-                img.style.opacity = 1;
-                container.appendChild(img);
-            };
-
-            img.onerror = () => {
-                container.innerHTML = `<p class='error-message'>❌ Failed to load image: ${imageName}</p>`;
-            };
-        }, 10); // give browser time to paint loader
     }
+}
+
+function showImage(imageName) {
+    const container = document.getElementById("chart-container");
+
+    // Hide summary if it's open
+    const summaryContainer = document.getElementById("summary-container");
+    if (summaryContainer) {
+        summaryContainer.style.display = "none";
+    }
+
+    // Hide blink text
+    const blinkText = document.getElementById("blink-text");
+    if (blinkText) {
+        blinkText.style.display = "none";
+    }
+
+    // Show loader
+    container.innerHTML = `<div class="loader"></div>`;
+
+    // Delay execution slightly so loader renders
+    setTimeout(() => {
+        const img = new Image();
+        img.src = `/static/images/${imageName}`;
+        img.id = "displayed-image";
+        img.style.opacity = 0;
+        img.style.transition = "opacity 0.4s ease";
+
+        img.onload = () => {
+            container.innerHTML = ""; // Remove loader
+            img.style.opacity = 1;
+            container.appendChild(img);
+        };
+
+        img.onerror = () => {
+            container.innerHTML = `<p class='error-message'>❌ Failed to load image: ${imageName}</p>`;
+        };
+    }, 10); // give browser time to paint loader
+}
 
 async function fetchDatasetSummary() {
     try {
@@ -221,18 +241,53 @@ async function fetchDatasetSummary() {
     }
 }
 
-    async function GenerateImages() {
-        try {
-            const response = await fetch("/api/generate_eda_images");
-            const data = await response.json();
-            console.log(data);
-        } catch (error) {
-            console.error("Error fetching dataset overview:", error);
-        }
+async function GenerateImages() {
+    try {
+        const response = await fetch("/api/generate_eda_images");
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Error fetching dataset overview:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    GenerateImages();
+
+    // Setup Download PDF buttons for sub-items
+    function setupDownloadButtons() {
+        document.querySelectorAll(".download-sub-pdf").forEach(button => {
+            button.removeEventListener("click", handleDownloadClick);
+            button.addEventListener("click", handleDownloadClick);
+        });
     }
 
+    function handleDownloadClick(event) {
+        const button = event.currentTarget;
+        const reportName = button.getAttribute("data-report");
 
-    GenerateImages();
+        fetch("/download_pdf", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                report_name: reportName
+            })
+        }).then(response => response.blob()).then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${reportName.replace(/\s+/g, '_').toLowerCase()}_report.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        }).catch(error => {
+            console.error('Error downloading PDF:', error);
+            alert('Error downloading PDF');
+        });
+    }
+
+    setupDownloadButtons();
+});
 </script>
 
 {% endblock %}
