@@ -283,6 +283,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         console.log("Chart created successfully");
+
+        // Add download PDF handler
+        document.getElementById("download-pdf").addEventListener("click", function() {
+            fetch("/download_pdf", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    monthly_revenue: result.monthly_revenue,
+                    total_revenue: result.total_revenue
+                })
+            }).then(response => response.blob()).then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'prediction_report.pdf';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            }).catch(error => {
+                console.error('Error downloading PDF:', error);
+                alert('Error downloading PDF');
+            });
+        });
+
       } else {
         alert(result.message);
       }
