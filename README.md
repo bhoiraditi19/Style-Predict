@@ -47,17 +47,22 @@ To combine my knowledge of machine learning and web development into a full-stac
 |-----------|------------------|
 | ![Home](screenshots/HomePage.png) | ![Predict](screenshots/Prediction.png) |
 
-| Data Insights Page |
+| Data Insights Page | 
 |--------------------|
 | ![Dataset](screenshots/datainsights.png) |
+
+| How It Works |
+|--------------|
+| ![How It Works](screenshots/how-it-works.png) |
 
 | Contact Us | Privacy Policy |
 |------------|----------------|
 | ![Contact](screenshots/contact.png) | ![Privacy](screenshots/privacy-policy.png) |
 
-| About Us |
+| About Us | 
 |----------|
 | ![About](screenshots/about.png) |
+
 
 
 ---
@@ -89,7 +94,8 @@ To combine my knowledge of machine learning and web development into a full-stac
   Fully structured frontend with the following routes/pages:
   - Home  
   - Prediction  
-  - Insights (EDA)  
+  - Insights (EDA)
+  - How It Works
   - About Us  
   - Contact Us  
   - Privacy Policy  
@@ -140,6 +146,11 @@ This project is licensed under the [MIT License](LICENSE).
 ## 🙋‍♂️ Author
 
 **Shailesh Hawale**
+
+## Contributors
+**Shresha Sinha**
+**Shravani Rodge**
+**Aditi Bhoir**
 
 - 📧 Email: [shaileshhawale004@gmail.com](mailto:shaileshhawale004@gmail.com)  
 - 🐙 GitHub: [ShaileshHawale](https://github.com/HawaleShailesh004)
